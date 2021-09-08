@@ -18,30 +18,37 @@
 
 import math
 
-def complicated_math_operation(starting_value, min_value, max_value, coefficient):
-    res = starting_value
-    res = multiply_it(res, min_value, max_value, coefficient)
-    res = add_it(res, min_value, max_value, coefficient)
-    res = sqrt_it(res, min_value, max_value, coefficient)
-    res = compound_op_it(res, min_value, max_value, coefficient)
-    return res
+class homework_4:
 
-def multiply_it(starting_value, min_value, max_value, coefficient):
-    return max(min_value, min(max_value, starting_value * coefficient))
-
-def add_it(starting_value, min_value, max_value, coefficient):
-    return max(min_value, min(max_value, starting_value + coefficient))
- 
-def sqrt_it(starting_value, min_value, max_value, coefficient):
-    return max(min_value, min(max_value, math.pow(starting_value, -coefficient)))
-
-def compound_op_it(starting_value, min_value, max_value, coefficient):
-    return add_it(
-        multiply_it(starting_value, min_value, max_value, coefficient),
-        min_value,
-        max_value,
-        coefficient
-    )
+    def __init__(self,starting_value, min_value, max_value, coefficient):
+        self.starting_value = starting_value
+        self.min_value = min_value
+        self.max_value = max_value
+        self.coefficient = coefficient
 
 
+    def complicated_math_operation(self):
+        res = self.starting_value
+        res = self.multiply_it()
+        res = self.add_it()
+        res = self.sqrt_it()
+        res = self.compound_op_it()
+        return res
+
+    def multiply_it(self):
+        return max(self.min_value, min(self.max_value, self.starting_value * self.coefficient))
+
+    def add_it(self):
+        return max(self.min_value, min(self.max_value, self.starting_value + self.coefficient))
     
+    def sqrt_it(self):
+        return max(self.min_value, min(self.max_value, math.pow(self.starting_value, -self.coefficient)))
+
+    def compound_op_it(self):
+        return self.add_it(
+            self.multiply_it(self.starting_value, self.min_value, self.max_value, self.coefficient),
+            self.min_value,
+            self.max_value,
+            self.coefficient
+        )
+
